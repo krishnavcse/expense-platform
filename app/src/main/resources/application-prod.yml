@@ -16,13 +16,20 @@ server:
   port: 8080
 
 management:
+  server:
+    port: 8081
   endpoints:
     web:
       exposure:
         include: health,info,metrics,prometheus
+      base-path: /actuator
   endpoint:
     health:
       show-details: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
 
 security:
   jwt:
