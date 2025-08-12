@@ -1,8 +1,10 @@
-# Build stage
-FROM eclipse-temurin:21-jdk AS build
+# Build stage uses Maven to ensure reproducible builds
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /workspace
+# Copy entire multi-module project to retain parent POM context
 COPY .. /workspace
-RUN ./mvnw -q -e -DskipTests package || mvn -q -DskipTests package
+# Build only the app module and its dependencies
+RUN mvn -B -q -DskipTests -pl app -am package
 
 # Run stage
 FROM eclipse-temurin:21-jre
