@@ -31,7 +31,11 @@ public class SecurityConfig {
                         "/v3/api-docs/**",
                         "/swagger-ui.html",
                         "/swagger-ui/**",
-                        "/h2-console/**"
+                        "/h2-console/**",
+                        "/actuator/health/**",
+                        "/actuator/info",
+                        "/actuator/metrics",
+                        "/actuator/prometheus"
                 ).permitAll()
                 .anyRequest().authenticated()
             );
