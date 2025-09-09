@@ -36,11 +36,11 @@ Dependency direction: `app` depends on `common`, `user`, `expense`, `i18n`. Feat
 ### Build
 
 ```bash
-mvn -q -f expense-platform-portfolio/pom.xml clean verify
+mvn -q -f expense-platform/pom.xml clean verify
 ```
 
 - Per-module tests and coverage are executed.
-- Aggregated coverage report: `expense-platform-portfolio/target/site/jacoco-aggregate/index.html`.
+- Aggregated coverage report: `expense-platform/target/site/jacoco-aggregate/index.html`.
 
 ### Run
 
@@ -51,12 +51,12 @@ Option 1: Run from your IDE
 
 Option 2: Run via Maven (dev profile)
 ```bash
-mvn -q -f expense-platform-portfolio/pom.xml -pl app spring-boot:run -Dspring-boot.run.profiles=dev
+mvn -q -f expense-platform/pom.xml -pl app spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 
 Option 3: Run the packaged JAR
 ```bash
-java -jar expense-platform-portfolio/app/target/app-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev
+java -jar expense-platform/app/target/app-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev
 ```
 
 ### Docker (Production-like)
@@ -64,7 +64,7 @@ java -jar expense-platform-portfolio/app/target/app-0.0.1-SNAPSHOT.jar --spring.
 Use Docker Compose to run PostgreSQL and the app (prod profile):
 
 ```bash
-cd expense-platform-portfolio
+cd expense-platform
 # Ensure JWT_SECRET_BASE64 is set to a strong Base64-encoded secret
 set JWT_SECRET_BASE64=REPLACE_WITH_BASE64_SECRET
 # or on Linux/macOS: export JWT_SECRET_BASE64=...
@@ -126,10 +126,10 @@ security:
 
 - Run all tests and generate coverage:
 ```bash
-mvn -q -f expense-platform-portfolio/pom.xml clean verify
+mvn -q -f expense-platform/pom.xml clean verify
 ```
 - Per-module reports under `*/target/site/`
-- Aggregate report: `expense-platform-portfolio/target/site/jacoco-aggregate/index.html`
+- Aggregate report: `expense-platform/target/site/jacoco-aggregate/index.html`
 
 ## Environment variables
 
@@ -153,17 +153,17 @@ mvn -q -f expense-platform-portfolio/pom.xml clean verify
 
 - **Build all modules**:
   ```bash
-  mvn -q -f expense-platform-portfolio/pom.xml clean verify
+  mvn -q -f expense-platform/pom.xml clean verify
   ```
 - **Run (dev)**:
   ```bash
-  mvn -q -f expense-platform-portfolio/pom.xml -pl app spring-boot:run -Dspring-boot.run.profiles=dev
+  mvn -q -f expense-platform/pom.xml -pl app spring-boot:run -Dspring-boot.run.profiles=dev
   ```
 - **Run packaged (dev)**:
   ```bash
-  java -jar expense-platform-portfolio/app/target/app-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev
+  java -jar expense-platform/app/target/app-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev
   ```
-- **Coverage report**: `expense-platform-portfolio/target/site/jacoco-aggregate/index.html`
+- **Coverage report**: `expense-platform/target/site/jacoco-aggregate/index.html`
 
 ## Troubleshooting
 
@@ -175,7 +175,7 @@ mvn -q -f expense-platform-portfolio/pom.xml clean verify
 ## Minimal structure
 
 ```
-expense-platform-portfolio/
+expense-platform/
   app/        # Boot app, security, controllers, config
   common/     # DTOs, shared validation/util
   user/       # User domain
